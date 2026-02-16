@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKR_HELPDESK</title>
+
+    <style>
+      body {
+    background: 
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+        url("/static/tkrdrone.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    margin: 0;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+}
+
+
+
+        .container {
+            border: 2px solid black;
+            padding: 40px;
+            text-align: center;
+            width: 300px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: white; /* TKR_HELPDESK Blue */
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            margin: 10px;
+            font-size: 16px;
+            border: 2px solid white;
+            background-color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: beige;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>TKR_HELPDESK</h1>
+
+       <button class="btn" onclick="location.href='/mainhome2'">Guest\అతిథి/अतिथि</button>
+
+<button class="btn" onclick="location.href='/student'">Student</button>
+
+    </div>
+
+</body>
+</html>

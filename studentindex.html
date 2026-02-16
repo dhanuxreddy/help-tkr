@@ -1,0 +1,1061 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TKR_HELPDESK</title>
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.5;
+      background-color: #f6f7fa;
+      color: #252b35;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1024px;
+      margin: auto;
+      padding: 0 1rem;
+      flex-grow: 1;
+    }
+
+    /* Header Navigation */
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #e3e4e6;
+      padding: 0.75rem 0;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-icon {
+      background-color: #2a57c0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #252b35;
+    }
+
+    .logo-subtext {
+      font-size: 0.75rem;
+      color: #7a7c87;
+      font-weight: 400;
+      margin-left: 0.3rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    nav ul li {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #252b35;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    nav ul li:hover {
+      text-decoration: underline;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero h1 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: #252b35;
+    }
+
+    .hero h1 .highlight {
+      color: #1a3da9;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #585d6b;
+      margin-bottom: 1.6rem;
+      line-height: 1.5;
+    }
+
+    .btn-chat {
+      display: inline-flex;
+      align-items: center;
+      background-color: #1a3da9;
+      color: #fff;
+      padding: 0.5rem 1.35rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+      user-select: none;
+    }
+
+    .btn-chat:hover {
+      background-color: #0f2c75;
+    }
+
+    .btn-chat svg {
+      margin-right: 8px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+    }
+
+    .caption {
+      font-size: 0.8rem;
+      color: #9c9c9c;
+      margin-top: 0.8rem;
+    }
+
+    /* Info Cards Section */
+    .info-cards {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+      flex-basis: 280px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      user-select: none;
+      min-width: 260px;
+    }
+
+    .card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.2rem;
+    }
+
+    .icon-location {
+      background-color: rgba(49, 105, 255, 0.15);
+      color: #3169ff;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .icon-languages {
+      background-color: rgba(31, 189, 136, 0.15);
+      color: #1fbd88;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .icon-calendar {
+      background-color: rgba(156, 71, 234, 0.15);
+      color: #9c47ea;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: #53565a;
+      line-height: 1.3;
+    }
+
+    /* Recent Events Section */
+    .recent-events {
+      margin-bottom: 3rem;
+    }
+
+    .recent-events h2 {
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 1.2rem;
+      color: #252b35;
+      padding-left: 0.15rem;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .event-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(36, 37, 38, 0.1);
+      padding: 1rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .event-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .event-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+      color: white;
+      user-select: none;
+    }
+
+    .badge-upcoming {
+      background-color: #4a90e2;
+    }
+
+    .badge-ongoing {
+      background-color: #3fd08f;
+      color: #004a24;
+    }
+
+    .event-date {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #264773;
+      user-select: none;
+    }
+
+    .event-month {
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: #264773;
+      margin-left: 4px;
+      margin-top: 3px;
+      user-select: none;
+    }
+
+    .event-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #252b35;
+      margin-bottom: 0.45rem;
+    }
+
+    .event-desc {
+      font-size: 0.85rem;
+      color: #595c6d;
+      margin-bottom: 1rem;
+      min-height: 40px;
+    }
+
+    .event-info {
+      font-size: 0.8rem;
+      color: #777b8a;
+      margin-bottom: 0.15rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      user-select: none;
+    }
+
+    .event-info svg {
+      stroke: #777b8a;
+      stroke-width: 2;
+      width: 14px;
+      height: 14px;
+    }
+
+    .btn-details {
+      background-color: #eee;
+      border: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #3a3b3e;
+      padding: 7px 0;
+      width: 100%;
+      border-radius: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-details:hover {
+      background-color: #d6d6d6;
+    }
+
+    .btn-details svg {
+      stroke: #3a3b3e;
+      stroke-width: 1.5;
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Footer Section */
+    footer {
+      background-color: #2d3443;
+      color: #eff2f7cc;
+      padding: 2rem 1rem 1rem;
+      font-size: 0.85rem;
+      min-width: 300px;
+    }
+
+    .footer-container {
+      max-width: 1024px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 190px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      user-select: none;
+    }
+
+    .footer-logo-icon {
+      background-color: #3f66ff;
+      color: white;
+      font-weight: 700;
+      padding: 0.4rem 0.6rem;
+      border-radius: 3px;
+      font-size: 22px;
+      font-family: Arial, sans-serif;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-description {
+      color: #bfc1c9;
+      font-weight: 400;
+      line-height: 1.4;
+      max-width: 270px;
+    }
+
+    .footer-column h3 {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      user-select: none;
+    }
+
+    .quick-links,
+    .contact-info {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .quick-links li,
+    .contact-info li {
+      margin-bottom: 0.6rem;
+      cursor: pointer;
+      color: #bfc1c9;
+      user-select: none;
+    }
+
+    .quick-links li:hover,
+    .contact-info li:hover {
+      text-decoration: underline;
+      color: #ffffff;
+    }
+
+    .contact-info li svg {
+      margin-right: 0.5rem;
+      vertical-align: middle;
+      stroke: #bfc1c9;
+      stroke-width: 1.5;
+      width: 16px;
+      height: 16px;
+      user-select: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.9rem;
+      }
+
+      .info-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      footer .footer-container {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .footer-column {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+    
+
+  <header>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap;">
+      <div class="logo-section" aria-label="TKR Helpdesk Logo">
+        <div class="logo-icon" aria-hidden="true" title="Institution Icon">🏛️</div>
+        <div>
+          <div class="logo-text">TKR_HELPDESK</div>
+          <div class="logo-subtext">College Campus Navigation System</div>
+        </div>
+      </div>
+      <nav aria-label="Primary Navigation">
+        <ul>
+          <li tabindex="0">Home</li>
+          <li tabindex="0">Blocks</li>
+          <li tabindex="0">Events</li>
+          <li tabindex="0">Chat</li>
+          <li tabindex="0">Dept</li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <section class="hero" id="homeSection" aria-labelledby="welcome-heading">
+
+
+      <h1 id="welcome-heading">Welcome to <span class="highlight">TKR_HELPDESK</span></h1>
+      <p>Your smart, interactive guide to navigating the TKR college campus. Find block locations, department details,
+        and campus information instantly.</p>
+      <button class="btn-chat" aria-label="Start Chat Now">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        Start Chat Now
+      </button>
+      <div class="caption" aria-live="polite">Click to begin your campus navigation assistance</div>
+    </section>
+
+    <section class="info-cards" aria-label="Key Features">
+      <article class="card" aria-labelledby="campus-nav-title">
+        <div class="card-icon icon-location" aria-hidden="true">📍</div>
+        <h3 id="campus-nav-title">Campus Navigation</h3>
+        <p>Get accurate directions to 10+ campus locations including blocks, hostels, and facilities.</p>
+      </article>
+
+      <article class="card" aria-labelledby="multi-support-title">
+        <div class="card-icon icon-languages" aria-hidden="true">🗣️</div>
+        <h3 id="multi-support-title">Multilingual Support</h3>
+        <p>Available in English, Telugu, and Hindi. Choose your preferred language for all interactions.</p>
+      </article>
+
+      <article class="card" aria-labelledby="event-updates-title">
+        <div class="card-icon icon-calendar" aria-hidden="true">📅</div>
+        <h3 id="event-updates-title">Event Updates</h3>
+        <p>Stay updated with ongoing and upcoming college events, dates, venues, and descriptions.</p>
+      </article>
+    </section>
+
+    <section class="recent-events" id="eventsSection" style="display:none;" aria-labelledby="recent-events-title">
+
+      <h2 id="recent-events-title">Recent College Events</h2>
+
+      <div class="events-grid">
+        <article class="event-card" aria-label="Event: Annual Tech Fest upcoming in April/May">
+          <div class="event-header">
+            <span class="event-badge badge-upcoming" aria-label="Upcoming Event">Upcoming</span>
+            <div style="display:flex; gap:5px; user-select:none;">
+              
+              <span class="event-month">April</span>
+            </div>
+          </div>
+          <h3 class="event-title">Annual Tech Fest</h3>
+          <p class="event-desc">Annual technical festival showcasing student projects and innovations</p>
+          <div class="event-info">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+              viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            19:00
+          </div>
+          <div class="event-info">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            Ground
+          </div>
+          <button class="btn-details" aria-label="Get Details for Annual Tech Fest">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="8"></line>
+            </svg>
+            Get Details
+          </button>
+        </article>
+
+        <article class="event-card" aria-label="Ongoing Technical Fest(Feb)">
+          <div class="event-header">
+            <span class="event-badge badge-ongoing" aria-label="Ongoing Event">Ongoing</span>
+            <div style="display:flex; gap:5px; user-select:none;">
+              
+              <span class="event-month">Feb</span>
+            </div>
+          </div>
+          <h3 class="event-title">Technical Fest</h3>
+          <p class="event-desc">Cultural performances and competitions by students</p>
+          <div class="event-info">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+              viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            10:00
+          </div>
+          <div class="event-info">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            College Auditorium
+          </div>
+          <button class="btn-details" aria-label="Get Details for Technical Fest">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="8"></line>
+            </svg>
+            Get Details
+          </button>
+        </article>
+
+        <article class="event-card" aria-label="Upcoming Sports Tournament in March">
+          <div class="event-header">
+            <span class="event-badge badge-upcoming" aria-label="Upcoming Event">Upcoming</span>
+            <div style="display:flex; gap:5px; user-select:none;">
+              
+              <span class="event-month">Mar</span>
+            </div>
+          </div>
+          <h3 class="event-title">Sports Tournament</h3>
+          <p class="event-desc">Inter-department sports competition</p>
+          <div class="event-info">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+              viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            09:00
+          </div>
+          <div class="event-info">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            Sports Ground
+          </div>
+          <button class="btn-details" aria-label="Get Details for Sports Tournament">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="8"></line>
+            </svg>
+            Get Details
+          </button>
+        </article>
+      </div>
+    </section>
+
+    
+<section id="blocksSection" style="display:none; margin-bottom:3rem;">
+
+  <h2>Campus Blocks</h2>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1rem;">
+
+    <!-- A Block -->
+    <div style="background:#fff; padding:1rem; border-radius:6px;">
+       <img 
+    src="{{ url_for('static', filename='ablockfin.JPEG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+      
+      <h3>A Block [EM Diploma]</h3>
+<p><b>Description:</b> This block is allocated for EM Diploma students. All Diploma classes and academic activities are conducted here.</p>
+
+    </div>
+
+    <!-- Pharmacy Block -->
+    <div style="background:#fff; padding:1rem; border-radius:6px; text-align:center;">
+  
+  <img 
+    src="{{ url_for('static', filename='pharmacy.JPG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+      <h3>Pharmacy Block</h3>
+<p><b>Description:</b> This block is allotted for B.Pharmacy and M.Pharmacy students. All pharmacy academic activities are conducted here.</p>
+
+</div>
+
+    <!-- EM Main Block -->
+<div style="background:#fff; padding:1rem; border-radius:6px; text-align:center;">
+  
+  <img 
+    src="{{ url_for('static', filename='mainblock.JPG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+
+  <h3>EM Main Block</h3>
+<p><b>Description:</b> B.Tech classes from second year onwards are conducted in this block.</p>
+
+</div>
+
+    <!-- EM New Block -->
+    <div style="background:#fff; padding:1rem; border-radius:6px;">
+      <img 
+    src="{{ url_for('static', filename='EMNEWblock.JPEG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+      <h3>EM New Block</h3>
+<p><b>Description:</b> This block mainly consists of laboratories for practical sessions and technical training.</p>
+
+    </div>
+
+    <!-- R9 Block -->
+    <div style="background:#fff; padding:1rem; border-radius:6px;">
+       <img 
+    src="{{ url_for('static', filename='r9.JPEG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+     <h3>R9 Block</h3>
+<p><b>Description:</b> This block is allocated for EM B.Tech first-year students.</p>
+
+    </div>
+
+    <!-- Boys Hostel -->
+    <div style="background:#fff; padding:1rem; border-radius:6px;">
+     <img 
+    src="{{ url_for('static', filename='boyshostel.JPEG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+      <h3>Boys Hostel</h3>
+<p><b>Description:</b> Accommodation facility for boys with basic amenities.</p>
+
+    </div>
+
+    <!-- Girls Hostel -->
+    <div style="background:#fff; padding:1rem; border-radius:6px;">
+      <img 
+    src="{{ url_for('static', filename='gh.JPEG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+     <h3>Girls Hostel</h3>
+<p><b>Description:</b> Accommodation facility for girls with safety and essential amenities.</p>
+
+    </div>
+
+    <!-- Canteen -->
+     <div style="background:#fff; padding:1rem; border-radius:6px; text-align:center;">
+  
+  <img 
+    src="{{ url_for('static', filename='canteen.JPEG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+
+  <h3>Canteen</h3>
+<p><b>Description:</b> Provides hygienic and affordable food for students and staff.</p>
+
+     </div>
+
+
+    <!-- T Block -->
+     <div style="background:#fff; padding:1rem; border-radius:6px; text-align:center;">
+  
+  <img 
+    src="{{ url_for('static', filename='tblock.JPEG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+
+ <h3>T Block</h3>
+<p><b>Description:</b> This block is allocated for RC B.Tech first-year students.</p>
+
+
+</div>
+
+    <!-- RC Main Block -->
+    <div style="background:#fff; padding:1rem; border-radius:6px; text-align:center;">
+  
+  <img 
+    src="{{ url_for('static', filename='adminblock.PNG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+<h3>RC Main Block</h3>
+<p><b>Description:</b> This is the administrative block. RC B.Tech and MBA classes are also conducted here.</p>
+
+</div>
+    <!-- RC Diploma Block -->
+    <div style="background:#fff; padding:1rem; border-radius:6px; text-align:center;">
+  
+  <img 
+    src="{{ url_for('static', filename='rcdiploma.JPG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+
+ <h3>RC Diploma Block</h3>
+<p><b>Description:</b> This block is allocated for RC Diploma students.</p>
+
+    </div>
+  </div>
+
+</section>
+<section id="chatSection" style="display:none; margin:40px 0;">
+  <h2>Chat Assistant</h2>
+
+  <div style="background:#f2f2f2; padding:20px; border-radius:8px; max-width:500px;">
+    <input 
+      type="text" 
+      id="chatInput"
+      placeholder="Ask your question (Example: A Block)" 
+      style="width:100%; padding:10px; margin-bottom:10px;"
+    >
+
+    <button onclick="sendMessage()" 
+      style="background:#1a3da9; color:white; padding:8px 20px; border:none; border-radius:20px;">
+      Send
+    </button>
+
+    <div id="chatReply" style="margin-top:10px;"></div>
+  </div>
+</section>
+<section id="deptSection" style="display:none;">
+
+<h2>College Blocks & Room Information</h2>
+
+<!-- RC MAIN BLOCK -->
+<h3>RC – Main Block</h3>
+<table border="1">
+<tr><th>Section</th><th>Room / Location</th></tr>
+<tr><td>Fee Counters</td><td>Entrance</td></tr>
+<tr><td>AO</td><td>102</td></tr>
+<tr><td>Scholarship Section</td><td>111</td></tr>
+<tr><td>Chairman Office</td><td>Left side, Ground Floor</td></tr>
+<tr><td>ECE HOD</td><td>209</td></tr>
+<tr><td>ECE Staff Room</td><td>209</td></tr>
+<tr><td>IT Staff Room</td><td>402</td></tr>
+<tr><td>Women Welfare Cell</td><td>403/A</td></tr>
+<tr><td>Central Library</td><td>201</td></tr>
+<tr><td>CSE Staff Room</td><td>203, 204, 205</td></tr>
+<tr><td>EEE Staff Room</td><td>202, 209</td></tr>
+<tr><td>CSD Staff Room</td><td>203, 204</td></tr>
+<tr><td>Principal</td><td>101</td></tr>
+</table>
+
+<br>
+
+<!-- A BLOCK -->
+<h3>A Block (Diploma)</h3>
+<table border="1">
+<tr><th>Section</th><th>Room / Location</th></tr>
+<tr><td>CSE / EEE / ECE Staff Room</td><td>401</td></tr>
+<tr><td>H&S Staff Room</td><td>106</td></tr>
+<tr><td>CSE / EEE / ECE</td><td>206</td></tr>
+<tr><td>Incharge</td><td>Ground Floor Entrance</td></tr>
+</table>
+
+<br>
+
+<!-- PHARMACY BLOCK -->
+<h3>Pharmacy Block</h3>
+<table border="1">
+<tr><th>Section</th><th>Room / Location</th></tr>
+<tr><td>Principal</td><td>101 (Ground Floor)</td></tr>
+<tr><td>Staff Room</td><td>201 (First Floor)</td></tr>
+</table>
+
+<br>
+
+<!-- EM MAIN BLOCK -->
+<h3>EM Main Block</h3>
+<table border="1">
+<tr><th>Section</th><th>Room</th></tr>
+<tr><td>Administration Room</td><td>204</td></tr>
+<tr><td>Scholarship</td><td>207</td></tr>
+<tr><td>Academic Section (Bus Pass)</td><td>105</td></tr>
+<tr><td>IT Staff Room</td><td>303</td></tr>
+<tr><td>Sports Room</td><td>403</td></tr>
+<tr><td>Library & Information Center</td><td>505</td></tr>
+<tr><td>H&S Staff Room</td><td>407</td></tr>
+</table>
+
+<br>
+
+<!-- NEW BLOCK -->
+<h3>New Block (EM)</h3>
+<table border="1">
+<tr><th>Section</th><th>Room</th></tr>
+<tr><td>ECE HOD</td><td>504</td></tr>
+<tr><td>Youth Employment Room</td><td>207</td></tr>
+<tr><td>Career Guidance Cell</td><td>108</td></tr>
+</table>
+
+<br>
+
+<!-- CIVIL RC BLOCK -->
+<h3>Civil RC Block (B.Tech)</h3>
+<table border="1">
+<tr><th>Section</th><th>Room</th></tr>
+<tr><td>HOD</td><td>203</td></tr>
+<tr><td>Staff Rooms</td><td>303, 403</td></tr>
+</table>
+
+<br>
+
+<!-- T BLOCK -->
+<h3>T Block</h3>
+<table border="1">
+<tr><th>Section</th><th>Room / Location</th></tr>
+<tr><td>MBA Staff Room</td><td>701</td></tr>
+<tr><td>ECE</td><td>301</td></tr>
+<tr><td>CSD</td><td>401</td></tr>
+<tr><td>Civil</td><td>501</td></tr>
+<tr><td>NCC Room</td><td>Ground Floor (Right side Entrance)</td></tr>
+<tr><td>EEE</td><td>201</td></tr>
+</table>
+
+<br>
+
+<!-- R&D BLOCK -->
+<h3>R&D Block (EM B.Tech)</h3>
+<table border="1">
+<tr><th>Section</th><th>Room / Location</th></tr>
+<tr><td>AIML Staff Room</td><td>Entrance</td></tr>
+<tr><td>EEE HOD</td><td>102</td></tr>
+<tr><td>AIML HOD</td><td>207</td></tr>
+<tr><td>CSD Staff Room</td><td>307</td></tr>
+<tr><td>H&S Staff Room</td><td>406</td></tr>
+<tr><td>H&S HOD</td><td>407</td></tr>
+<tr><td>CSE Staff & HOD</td><td>507</td></tr>
+</table>
+
+<br>
+
+<!-- OTHER -->
+<h3>Other Facilities</h3>
+<table border="1">
+<tr><th>Facility</th><th>Location</th></tr>
+<tr><td>ATM</td><td>Left side near Food Court</td></tr>
+</table>
+
+</section>
+
+
+
+  </main>
+ <footer>
+  <div class="footer-container">
+
+    <!-- Column 1 -->
+    <div class="footer-column">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">🏛️</div> TKR_HELPDESK
+      </div>
+      <p class="footer-description">
+        Smart interactive web-based help desk for TKR college campus providing complete campus navigation assistance.
+      </p>
+    </div>
+
+    <!-- Column 2 -->
+    <div class="footer-column">
+      <h3>Description</h3>
+      <ul class="quick-links">
+        <li>Home</li>
+        <li>Campus Blocks</li>
+        <li>College Events</li>
+        <li>Chat Assistance</li>
+        <li>Done by Nikhitha Reddy and team with Love(2026)</li>
+      </ul>
+    </div>
+
+    <!-- Column 3 (Contact) -->
+    <div class="footer-column">
+      <h3>Contact</h3>
+      <ul class="contact-info">
+        <li>📍 TKR College Campus</li>
+        <li>📞 +91 9949665436</li>
+        <li>✉ helpdesk@tkrcet.ac.in</li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const home = document.getElementById("homeSection");
+    const blocks = document.getElementById("blocksSection");
+    const dept = document.getElementById("deptSection");
+    const events = document.getElementById("eventsSection");
+    const chat = document.getElementById("chatSection");
+
+    const menuItems = document.querySelectorAll("nav ul li");
+
+    function hideAll(){
+        if(home) home.style.display="none";
+        if(blocks) blocks.style.display="none";
+        if(dept) dept.style.display="none";
+        if(events) events.style.display="none";
+        if(chat) chat.style.display="none";
+    }
+
+    hideAll();
+    if(home) home.style.display="block";
+
+    menuItems.forEach(item=>{
+        item.addEventListener("click", function(){
+            const text = this.innerText.toLowerCase();
+            hideAll();
+
+            if(text.includes("home")) home.style.display="block";
+            else if(text.includes("block")) blocks.style.display="block";
+            else if(text.includes("dept")) dept.style.display="block";
+            else if(text.includes("event")) events.style.display="block";
+            else if(text.includes("chat")) chat.style.display="block";
+        });
+    });
+
+});
+</script>
+<script>
+function sendMessage(lang="en"){
+    const input = document.getElementById("chatInput");
+    const reply = document.getElementById("chatReply");
+
+    if(!input || !reply) {
+        console.log("Chat elements not found");
+        return;
+    }
+
+    if(!input.value.trim()) return;
+
+    fetch("/api/chat",{
+        method:"POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({
+            message: input.value,
+            lang: lang
+        })
+    })
+    .then(res=>res.json())
+    .then(data=>{
+    reply.innerHTML = data.reply;
+
+    // If image exists, show it
+    if(data.image){
+        reply.innerHTML += `<br>
+        <img src="${data.image}" style="width:120px; margin-top:8px; border-radius:6px;">`;
+    }
+
+    input.value="";
+});
+}
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,1038 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TKR_HELPDESK</title>
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.5;
+      background-color: #f6f7fa;
+      color: #252b35;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1024px;
+      margin: auto;
+      padding: 0 1rem;
+      flex-grow: 1;
+    }
+
+    /* Header Navigation */
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #e3e4e6;
+      padding: 0.75rem 0;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-icon {
+      background-color: #2a57c0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #252b35;
+    }
+
+    .logo-subtext {
+      font-size: 0.75rem;
+      color: #7a7c87;
+      font-weight: 400;
+      margin-left: 0.3rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    nav ul li {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #252b35;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    nav ul li:hover {
+      text-decoration: underline;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero h1 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: #252b35;
+    }
+
+    .hero h1 .highlight {
+      color: #1a3da9;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #585d6b;
+      margin-bottom: 1.6rem;
+      line-height: 1.5;
+    }
+
+    .btn-chat {
+      display: inline-flex;
+      align-items: center;
+      background-color: #1a3da9;
+      color: #fff;
+      padding: 0.5rem 1.35rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+      user-select: none;
+    }
+
+    .btn-chat:hover {
+      background-color: #0f2c75;
+    }
+
+    .btn-chat svg {
+      margin-right: 8px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+    }
+
+    .caption {
+      font-size: 0.8rem;
+      color: #9c9c9c;
+      margin-top: 0.8rem;
+    }
+
+    /* Info Cards Section */
+    .info-cards {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+      flex-basis: 280px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      user-select: none;
+      min-width: 260px;
+    }
+
+    .card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.2rem;
+    }
+
+    .icon-location {
+      background-color: rgba(49, 105, 255, 0.15);
+      color: #3169ff;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .icon-languages {
+      background-color: rgba(31, 189, 136, 0.15);
+      color: #1fbd88;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .icon-calendar {
+      background-color: rgba(156, 71, 234, 0.15);
+      color: #9c47ea;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: #53565a;
+      line-height: 1.3;
+    }
+
+    /* Recent Events Section */
+    .recent-events {
+      margin-bottom: 3rem;
+    }
+
+    .recent-events h2 {
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 1.2rem;
+      color: #252b35;
+      padding-left: 0.15rem;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .event-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(36, 37, 38, 0.1);
+      padding: 1rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .event-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .event-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+      color: white;
+      user-select: none;
+    }
+
+    .badge-upcoming {
+      background-color: #4a90e2;
+    }
+
+    .badge-ongoing {
+      background-color: #3fd08f;
+      color: #004a24;
+    }
+
+    .event-date {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #264773;
+      user-select: none;
+    }
+
+    .event-month {
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: #264773;
+      margin-left: 4px;
+      margin-top: 3px;
+      user-select: none;
+    }
+
+    .event-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #252b35;
+      margin-bottom: 0.45rem;
+    }
+
+    .event-desc {
+      font-size: 0.85rem;
+      color: #595c6d;
+      margin-bottom: 1rem;
+      min-height: 40px;
+    }
+
+    .event-info {
+      font-size: 0.8rem;
+      color: #777b8a;
+      margin-bottom: 0.15rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      user-select: none;
+    }
+
+    .event-info svg {
+      stroke: #777b8a;
+      stroke-width: 2;
+      width: 14px;
+      height: 14px;
+    }
+
+    .btn-details {
+      background-color: #eee;
+      border: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #3a3b3e;
+      padding: 7px 0;
+      width: 100%;
+      border-radius: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-details:hover {
+      background-color: #d6d6d6;
+    }
+
+    .btn-details svg {
+      stroke: #3a3b3e;
+      stroke-width: 1.5;
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Footer Section */
+    footer {
+      background-color: #2d3443;
+      color: #eff2f7cc;
+      padding: 2rem 1rem 1rem;
+      font-size: 0.85rem;
+      min-width: 300px;
+    }
+
+    .footer-container {
+      max-width: 1024px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 190px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      user-select: none;
+    }
+
+    .footer-logo-icon {
+      background-color: #3f66ff;
+      color: white;
+      font-weight: 700;
+      padding: 0.4rem 0.6rem;
+      border-radius: 3px;
+      font-size: 22px;
+      font-family: Arial, sans-serif;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-description {
+      color: #bfc1c9;
+      font-weight: 400;
+      line-height: 1.4;
+      max-width: 270px;
+    }
+
+    .footer-column h3 {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      user-select: none;
+    }
+
+    .quick-links,
+    .contact-info {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .quick-links li,
+    .contact-info li {
+      margin-bottom: 0.6rem;
+      cursor: pointer;
+      color: #bfc1c9;
+      user-select: none;
+    }
+
+    .quick-links li:hover,
+    .contact-info li:hover {
+      text-decoration: underline;
+      color: #ffffff;
+    }
+
+    .contact-info li svg {
+      margin-right: 0.5rem;
+      vertical-align: middle;
+      stroke: #bfc1c9;
+      stroke-width: 1.5;
+      width: 16px;
+      height: 16px;
+      user-select: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.9rem;
+      }
+
+      .info-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      footer .footer-container {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .footer-column {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap;">
+      <div class="logo-section" aria-label="TKR Helpdesk Logo">
+        <div class="logo-icon" aria-hidden="true" title="Institution Icon">🏛️</div>
+        <div>
+          <div class="logo-text">टीकेआर_हेल्पडेस्क
+</div>
+          <div class="logo-subtext">कॉलेज कैंपस नेविगेशन सिस्टम
+</div>
+        </div>
+      </div>
+      <nav aria-label="Primary Navigation">
+        <ul>
+          <li tabindex="0">होम</li>
+<li tabindex="0">ब्लॉक्स</li>
+<li tabindex="0">इवेंट्स</li>
+<li tabindex="0">चैट</li>
+<li tabindex="0">महत्वपूर्ण कक्ष</li>
+
+
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <section class="hero" aria-labelledby="welcome-heading">
+      <h1 id="welcome-heading">स्वागत है
+ <span class="highlight"></span>टीकेआर_हेल्पडेस्क</h1>
+      <p>टीकेआर कॉलेज कैंपस में मार्गदर्शन के लिए आपका स्मार्ट सहायक। ब्लॉक लोकेशन और जानकारी तुरंत प्राप्त करें।
+</p>
+      <button class="btn-chat" aria-label="Start Chat Now">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        चैट शुरू करें
+
+      </button>
+      <div class="caption" aria-live="polite">कैंपस सहायता शुरू करने के लिए क्लिक करें
+e</div>
+    </section>
+
+    <section class="info-cards" aria-label="Key Features">
+      <article class="card" aria-labelledby="campus-nav-title">
+        <div class="card-icon icon-location" aria-hidden="true">📍</div>
+        <h3 id="campus-nav-title">कैंपस नेविगेशन</h3>
+<p>ब्लॉक्स, हॉस्टल और अन्य सुविधाओं सहित 10+ कैंपस स्थानों के लिए सटीक दिशा प्राप्त करें।</p>
+</article>
+
+<article class="card" aria-labelledby="multi-support-title">
+  <div class="card-icon icon-languages" aria-hidden="true">🗣️</div>
+  <h3 id="multi-support-title">बहुभाषी समर्थन</h3>
+  <p>अंग्रेज़ी, तेलुगु और हिंदी में उपलब्ध। सभी इंटरैक्शन के लिए अपनी पसंदीदा भाषा चुनें।</p>
+</article>
+
+<article class="card" aria-labelledby="event-updates-title">
+  <div class="card-icon icon-calendar" aria-hidden="true">📅</div>
+  <h3 id="event-updates-title">इवेंट अपडेट्स</h3>
+  <p>चल रहे और आने वाले कॉलेज कार्यक्रमों, तिथियों, स्थानों और विवरणों की जानकारी प्राप्त करें।</p>
+</article>
+</section>
+
+<section class="recent-events" aria-labelledby="recent-events-title">
+  <h2 id="recent-events-title">हाल के कॉलेज इवेंट्स</h2>
+
+  <div class="events-grid">
+    <article class="event-card" aria-label="कार्यक्रम: वार्षिक टेक फेस्ट अप्रैल/मई में">
+      <div class="event-header">
+        <span class="event-badge badge-upcoming" aria-label="आगामी कार्यक्रम">आगामी</span>
+        <div style="display:flex; gap:5px; user-select:none;">
+          
+          <span class="event-month">अप्रैल</span>
+        </div>
+      </div>
+      <h3 class="event-title">वार्षिक टेक फेस्ट</h3>
+      <p class="event-desc">छात्रों की परियोजनाओं और नवाचारों को प्रदर्शित करने वाला वार्षिक तकनीकी उत्सव</p>
+      <div class="event-info">
+
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+              viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            19:00
+          </div>
+          <div class="event-info">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            Ground
+          </div>
+          <button class="btn-details" aria-label="Get Details for Annual Tech Fest">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="8"></line>
+            </svg>
+            Get Details
+          </button>
+        </article>
+
+        <article class="event-card" aria-label="कार्यक्रम: चल रहा टेक्निकल फेस्ट (फरवरी)">
+  <div class="event-header">
+    <span class="event-badge badge-ongoing" aria-label="चल रहा कार्यक्रम">चल रहा है</span>
+    <div style="display:flex; gap:5px; user-select:none;">
+      
+      <span class="event-month">फरवरी</span>
+    </div>
+  </div>
+  <h3 class="event-title">टेक्निकल फेस्ट</h3>
+  <p class="event-desc">छात्रों द्वारा सांस्कृतिक कार्यक्रम और प्रतियोगिताएँ</p>
+  <div class="event-info">
+    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+      viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="10"></circle>
+      <polyline points="12 6 12 12 16 14"></polyline>
+    </svg>
+    10:00
+  </div>
+  <div class="event-info">
+    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3"></circle>
+    </svg>
+    कॉलेज ऑडिटोरियम
+  </div>
+  <button class="btn-details" aria-label="टेक्निकल फेस्ट का विवरण">
+    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
+      aria-hidden="true">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="16" x2="12" y2="12"></line>
+      <line x1="12" y1="8" x2="12" y2="8"></line>
+    </svg>
+    विवरण देखें
+  </button>
+</article>
+
+<article class="event-card" aria-label="कार्यक्रम: मार्च में आने वाली खेल प्रतियोगिता">
+  <div class="event-header">
+    <span class="event-badge badge-upcoming" aria-label="आगामी कार्यक्रम">आगामी</span>
+    <div style="display:flex; gap:5px; user-select:none;">
+      
+      <span class="event-month">मार्च</span>
+    </div>
+  </div>
+  <h3 class="event-title">खेल प्रतियोगिता</h3>
+  <p class="event-desc">विभागों के बीच खेल प्रतियोगिता</p>
+  <div class="event-info">
+    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+      viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="10"></circle>
+      <polyline points="12 6 12 12 16 14"></polyline>
+    </svg>
+    09:00
+  </div>
+  <div class="event-info">
+    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3"></circle>
+    </svg>
+    खेल मैदान
+  </div>
+  <button class="btn-details" aria-label="खेल प्रतियोगिता का विवरण">
+    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
+      aria-hidden="true">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="16" x2="12" y2="12"></line>
+      <line x1="12" y1="8" x2="12" y2="8"></line>
+    </svg>
+    विवरण देखें
+  </button>
+</article>
+</div>
+</section>
+<section id="roomsSection" style="display:none; margin-bottom:3rem;">
+  <h2>महत्वपूर्ण कक्ष</h2>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1rem;">
+
+    <div style="background:#fff; padding:1rem; border-radius:6px;">
+      <h3>प्रिंसिपल कक्ष</h3>
+      <p><b>ब्लॉक:</b> एडमिन ब्लॉक</p>
+      <p><b>कमरा नं:</b> 101</p>
+    </div>
+
+    <div style="background:#fff; padding:1rem; border-radius:6px;">
+      <h3>परीक्षा शाखा</h3>
+      <p><b>ब्लॉक:</b> RC मेन ब्लॉक</p>
+      <p><b>कमरा नं:</b> 105</p>
+    </div>
+
+    <div style="background:#fff; padding:1rem; border-radius:6px;">
+      <h3>एडमिन ऑफिस</h3>
+      <p><b>ब्लॉक:</b> एडमिन ब्लॉक</p>
+      <p><b>कमरा नं:</b> 102</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="chatSection" style="display:none; margin-bottom:3rem;">
+  <h2>चैट सहायक</h2>
+
+  <div style="background:#fff; padding:1.5rem; border-radius:8px; max-width:500px;">
+    
+    <input 
+      type="text" 
+      id="chatInput" 
+      placeholder="अपना प्रश्न पूछें (उदा: A Block)"
+      style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;"
+    >
+
+    <br><br>
+
+    <button onclick="sendMessage()" class="btn-chat">
+      Send
+    </button>
+     <div id="chatReply" style="margin-top:10px; font-weight:600;"></div>
+
+    <img id="chatImage" style="margin-top:10px; max-width:200px; display:none; border-radius:6px;">
+
+
+  </div>
+</section>
+
+
+<section id="blocksSection" style="display:none; margin-bottom:3rem;">
+  <h2>कैंपस ब्लॉक्स</h2>
+
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1rem;">
+
+   <!-- A Block -->
+<div style="background:#fff; padding:1rem; border-radius:6px;">
+  <img 
+    src="{{ url_for('static', filename='ablockfin.JPEG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+ <h3>ए ब्लॉक [EM डिप्लोमा]</h3>
+<p><b>विवरण:</b> यह ब्लॉक EM डिप्लोमा छात्रों के लिए निर्धारित है। डिप्लोमा की सभी कक्षाएँ और शैक्षणिक गतिविधियाँ यहाँ आयोजित की जाती हैं।</p>
+
+</div>
+
+<!-- Pharmacy Block -->
+<div style="background:#fff; padding:1rem; border-radius:6px; text-align:center;">
+
+  <img 
+    src="{{ url_for('static', filename='pharmacy.JPG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+
+  <h3>फार्मेसी ब्लॉक</h3>
+<p><b>विवरण:</b> यह ब्लॉक B.Pharmacy और M.Pharmacy छात्रों के लिए है। फार्मेसी की सभी शैक्षणिक गतिविधियाँ यहाँ संचालित होती हैं।</p>
+
+</div>
+
+<!-- EM Main Block -->
+<div style="background:#fff; padding:1rem; border-radius:6px; text-align:center;">
+
+  <img 
+    src="{{ url_for('static', filename='mainblock.JPG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+
+ <h3>ईएम मुख्य ब्लॉक</h3>
+<p><b>विवरण:</b> इस ब्लॉक में B.Tech के दूसरे वर्ष से आगे के छात्रों की कक्षाएँ आयोजित की जाती हैं।</p>
+
+
+</div>
+
+<!-- EM New Block -->
+<div style="background:#fff; padding:1rem; border-radius:6px;">
+  <img 
+    src="{{ url_for('static', filename='EMNEWblock.JPEG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+  <h3>ईएम नया ब्लॉक</h3>
+<p><b>विवरण:</b> इस ब्लॉक में मुख्य रूप से प्रयोगशालाएँ हैं, जहाँ प्रैक्टिकल और तकनीकी प्रशिक्षण दिया जाता है।</p>
+
+</div>
+
+<!-- R9 Block -->
+<div style="background:#fff; padding:1rem; border-radius:6px;">
+ <img 
+    src="{{ url_for('static', filename='r9.JPEG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+  <h3>आर9 ब्लॉक</h3>
+<p><b>विवरण:</b> यह ब्लॉक EM B.Tech प्रथम वर्ष के छात्रों के लिए निर्धारित है।</p>
+
+</div>
+
+
+<!-- Canteen -->
+<div style="background:#fff; padding:1rem; border-radius:6px; text-align:center;">
+
+  <img 
+    src="{{ url_for('static', filename='canteen.JPEG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+
+  <h3>कैंटीन</h3>
+<p><b>विवरण:</b> यहाँ छात्रों और स्टाफ के लिए स्वच्छ और किफायती भोजन उपलब्ध है।</p>
+
+</div>
+
+<!-- T Block -->
+<div style="background:#fff; padding:1rem; border-radius:6px; text-align:center;">
+
+  <img 
+    src="{{ url_for('static', filename='tblock.JPEG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+
+  <h3>टी ब्लॉक</h3>
+<p><b>विवरण:</b> यह ब्लॉक RC B.Tech प्रथम वर्ष के छात्रों के लिए निर्धारित है।</p>
+
+</div>
+
+<!-- RC Main Block -->
+<div style="background:#fff; padding:1rem; border-radius:6px; text-align:center;">
+
+  <img 
+    src="{{ url_for('static', filename='adminblock.PNG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+
+ <h3>टी ब्लॉक</h3>
+<p><b>विवरण:</b> यह ब्लॉक RC B.Tech प्रथम वर्ष के छात्रों के लिए निर्धारित है।</p>
+
+</div>
+
+<!-- RC Diploma Block -->
+<div style="background:#fff; padding:1rem; border-radius:6px; text-align:center;">
+
+  <img 
+    src="{{ url_for('static', filename='rcdiploma.JPG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+
+  <h3>आरसी डिप्लोमा ब्लॉक</h3>
+<p><b>विवरण:</b> यह ब्लॉक RC डिप्लोमा छात्रों के लिए निर्धारित है।</p>
+
+</div>
+<!-- Boys Hostel -->
+<div style="background:#fff; padding:1rem; border-radius:6px;">
+  <img 
+    src="{{ url_for('static', filename='boyshostel.JPEG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+  <h3>बालक छात्रावास</h3>
+<p><b>विवरण:</b> यह लड़कों के लिए आवास सुविधा है, जिसमें आवश्यक सुविधाएँ उपलब्ध हैं।</p>
+
+</div>
+
+<!-- Girls Hostel -->
+<div style="background:#fff; padding:1rem; border-radius:6px;">
+ <img 
+    src="{{ url_for('static', filename='gh.JPEG') }}" 
+    style="width:90px; height:auto; border-radius:4px; display:block; margin:0 auto 10px;"
+  >
+  <h3>बालिका छात्रावास</h3>
+<p><b>विवरण:</b> यह छात्राओं के लिए सुरक्षित आवास सुविधा है, जिसमें आवश्यक सुविधाएँ उपलब्ध हैं।</p>
+
+</div>
+
+</section>
+
+
+
+  </main>
+<footer>
+  <div class="footer-container">
+    <div class="footer-column" aria-labelledby="footer-logo-heading">
+      <div class="footer-logo" id="footer-logo-heading">
+        <div class="footer-logo-icon" aria-hidden="true">🏛️</div> टीकेआर_हेल्पडेस्क
+      </div>
+      <p class="footer-description">
+        TKR कॉलेज कैंपस के लिए स्मार्ट इंटरैक्टिव वेब-आधारित हेल्प डेस्क, जो पूर्ण कैंपस नेविगेशन सहायता प्रदान करता है।
+      </p>
+    </div>
+
+    <div class="footer-column" aria-labelledby="quick-links-heading">
+      <h3 id="quick-links-heading">विवरण</h3>
+      <ul class="quick-links" role="list">
+        <li tabindex="0">होम</li>
+        <li tabindex="0">कैंपस ब्लॉक्स</li>
+        <li tabindex="0">कॉलेज इवेंट्स</li>
+        <li tabindex="0">चैट सहायता</li>
+        <li tabindex="0">निखिता रेड्डी और टीम द्वारा प्रेम से बनाया गया (2026)</li>
+      </ul>
+    </div>
+
+    <div class="footer-column" aria-labelledby="contact-heading">
+      <h3 id="contact-heading">संपर्क</h3>
+      <ul class="contact-info" role="list">
+        <li tabindex="0">
+          <svg fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round"
+            stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          टीकेआर कॉलेज कैंपस
+        </li>
+
+        <li tabindex="0">
+          <svg fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round"
+            stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.31 12.31 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.3 12.3 0 0 0 2.82.69A2 2 0 0 1 22 16.92z">
+            </path>
+          </svg>
+          +91 9949665436
+        </li>
+
+        <li tabindex="0">
+          <svg fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round"
+            stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 4h16v16H4z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          helpdesk@tkrcet.ac.in
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // -------- GLOBAL FUNCTION --------
+function hideAll() {
+  const home = document.querySelector(".hero");
+  const blocks = document.getElementById("blocksSection");
+  const chat = document.getElementById("chatSection");
+  const events = document.querySelector(".recent-events");
+  const rooms = document.getElementById("roomsSection");
+
+  if (home) home.style.display = "none";
+  if (blocks) blocks.style.display = "none";
+  if (chat) chat.style.display = "none";
+  if (events) events.style.display = "none";
+  if (rooms) rooms.style.display = "none";
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Sections
+  const home = document.querySelector(".hero");
+  const blocks = document.getElementById("blocksSection");
+  const chat = document.getElementById("chatSection");
+  const events = document.querySelector(".recent-events");
+  const rooms = document.getElementById("roomsSection");
+
+  // Menu items
+  const menu = document.querySelectorAll("nav ul li");
+
+  function hideAll() {
+    if (home) home.style.display = "none";
+    if (blocks) blocks.style.display = "none";
+    if (chat) chat.style.display = "none";
+    if (events) events.style.display = "none";
+    if (rooms) rooms.style.display = "none";
+
+  }
+
+  // Navigation clicks
+  menu.forEach(item => {
+    item.addEventListener("click", () => {
+
+      const text = item.innerText.toLowerCase();
+
+      hideAll();
+
+      if (text.includes("होम"))
+        home.style.display = "block";
+
+      else if (text.includes("ब्लॉक"))
+        blocks.style.display = "block";
+
+      else if (text.includes("इवेंट"))
+        events.style.display = "block";
+
+      else if (text.includes("चैट"))
+        chat.style.display = "block";
+
+      else if (text.includes("एडमिन"))
+        adminLogin();
+      else if (text.includes("कमरा") || text.includes("कक्ष"))
+    rooms.style.display = "block";
+
+    });
+  });
+
+  function adminLogin() {
+    const u = prompt("Admin Username:");
+    const p = prompt("Admin Password:");
+
+    if (u === "admin" && p === "!@#$%")
+      alert("Admin Login Successful");
+    else
+      alert("Invalid Admin");
+  }
+
+});
+
+
+// -------- CHAT FUNCTION --------
+function sendMessage() {
+
+  const msg = document.getElementById("chatInput").value;
+  if (!msg) return;
+
+  fetch("/api/chat", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: msg,
+      lang: "hi"
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+
+  const replyText = document.getElementById("chatReply");
+  const replyImg = document.getElementById("chatImage");
+
+  replyText.innerText = data.reply;
+
+  // Show block image
+  if(data.image && data.image !== ""){
+      replyImg.src = data.image;
+      replyImg.style.display = "block";
+  } else {
+      replyImg.style.display = "none";
+  }
+
+  // If user typed room
+  const msgLower = msg.toLowerCase();
+  if(msgLower.includes("room") || msgLower.includes("rooms") || msgLower.includes("कक्ष")){
+      hideAll();
+      rooms.style.display = "block";
+  }
+
+})
+
+  .catch(() => {
+    document.getElementById("chatReply").innerText = "Server error";
+  });
+}
+</script>
+
+</body>
+
+</html>

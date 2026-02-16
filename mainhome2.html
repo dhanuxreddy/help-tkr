@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Selection</title>
+
+    <style>
+        body {
+    background: 
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+        url("/static/tkrdrone.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    margin: 0;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+}
+
+        .container {
+            border: 2px solid white;
+            padding: 30px 40px;
+            width: 280px;
+            border-radius: 8px;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .language-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .language-list li {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .language-list li:hover {
+            background-color: blue;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="title">
+            Language | భాష | भाषा
+        </div>
+
+        <ul class="language-list">
+            <li onclick="location.href='/telugu'">తెలుగు</li>
+<li onclick="location.href='/hindi'">हिंदी</li>
+<li onclick="location.href='/english'">English</li>
+
+        </ul>
+    </div>
+
+</body>
+</html>
