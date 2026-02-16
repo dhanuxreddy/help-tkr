@@ -520,7 +520,7 @@
       <h1 id="welcome-heading">Welcome to <span class="highlight">TKR_HELPDESK</span></h1>
       <p>Your smart, interactive guide to navigating the TKR college campus. Find block locations, department details,
         and campus information instantly.</p>
-      <button class="btn-chat" aria-label="Start Chat Now">
+      <button class="btn-chat" aria-label="Start Chat Now" onclick="openChat()">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
           stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -946,10 +946,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if(blocks) blocks.style.display="none";
     if(events) events.style.display="none";
     if(chat) chat.style.display="none";
-    if(rooms) rooms.style.display = "none";
+    if(rooms) rooms.style.display="none";
   }
 
-  // default
+  // default page
   hideAll();
   if(home) home.style.display="block";
 
@@ -963,15 +963,29 @@ document.addEventListener("DOMContentLoaded", function () {
       else if(text.includes("block")) blocks.style.display="block";
       else if(text.includes("event")) events.style.display="block";
       else if(text.includes("chat")) chat.style.display="block";
-      else if(text.includes("admin")) window.location.href="/admin";
       else if(text.includes("room")) rooms.style.display="block";
     });
   });
 
 });
 
-// Chat
- function sendMessage(lang="en"){
+
+// Open chat from hero button
+function openChat() {
+  const home = document.getElementById("homeSection");
+  const chat = document.getElementById("chatSection");
+
+  if(home) home.style.display = "none";
+  if(chat) chat.style.display = "block";
+
+  if(chat){
+    chat.scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+
+// Chat API call
+function sendMessage(lang="en"){
   const input = document.getElementById("chatInput");
   const reply = document.getElementById("chatReply");
   const img = document.getElementById("chatImage");
@@ -990,7 +1004,6 @@ document.addEventListener("DOMContentLoaded", function () {
   .then(data=>{
     reply.innerText = data.reply;
 
-    // show image
     if(data.image && data.image !== ""){
       img.src = data.image;
       img.style.display = "block";
@@ -1002,9 +1015,9 @@ document.addEventListener("DOMContentLoaded", function () {
   })
   .catch(()=> reply.innerText="Server error");
 }
-
 </script>
 
 </body>
 
 </html>
+
